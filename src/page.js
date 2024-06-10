@@ -15,7 +15,7 @@ const Page=()=>{
 
 
        <MainNavBar/>
-       <div className='absolute w-11/12 z-40 right-0 flex flex-col justify-center border bg-slate-400 items-center '>
+       <div className='absolute w-10/12 h-screen  z-40 right-0 flex flex-col justify-center border shadow-orange-300 xl:shadow-xl items-center '>
 
             <Routes> 
                  <Route path="/" element={<Home />}  /> 

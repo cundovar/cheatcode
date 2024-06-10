@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Prism from "prismjs";
-import "prismjs/themes/prism.css"; // Ou un autre thème si vous préférez
-import "prismjs/components/prism-javascript"; // Importez les langages que vous souhaitez utiliser
+import "prismjs/themes/prism.css"; 
+import "prismjs/components/prism-javascript"; 
 import SearchBar from "../common/navbar/chearchBar";
 import { useSearchResult } from "../common/navbar/resultChearchContext";
-// Ajoutez d'autres langages ici si nécessaire
+import Result from "../common/utils/result";
+
 
 const ArticleId = () => {
   const { results } = useSearchResult();
@@ -21,7 +22,7 @@ const ArticleId = () => {
   }, [id]);
   useEffect(() => {
     if (content) {
-      Prism.highlightAll(); // Met en évidence tous les éléments de code après le rendu du contenu
+      Prism.highlightAll(); 
     }
   }, [content]);
 
@@ -31,30 +32,28 @@ const ArticleId = () => {
   }
 
   return (
-    <>
-      {results.map((result, index) => (
-        <div key={index}>
-          <h2>{result.title}</h2>
-          <p>{result.content}</p>
-        </div>
-      ))}
-
+    <main className=" overflow-y-auto flex flex-col   items-center  bg-slate-50 ">
+   <Result/>
       <h2>{content.title} </h2>
       <div className="w-1/2 text-justify">
-        <p className="text-xl">{content.para} </p>
+        <div dangerouslySetInnerHTML={{ __html: content.para }} />
       </div>
       <pre className="language-js">
         <code>{content.content}</code>
       </pre>
       <div className="w-1/2 text-justify">
-        <p className="text-xl">{content.para1} </p>
+        <div dangerouslySetInnerHTML={{ __html: content.para1 }} />
       </div>
-      <div className="flex w-full">
-        <pre classname={` language-js ${content.image ? "col 6 language-js" : "language-js"}`}>
-          <code className="language-js">{content.content1}</code>
-        </pre>
-        {content.image && (
-          <div classname="col-6">
+      <div className="flex  w-full">
+        <div className={` border m-auto  ${content.image ? "col-6 " : "  "}`}>
+          {content.content1 && (
+            <pre classname="language-js">
+              <code className=" border language-js">{content.content1}</code>
+            </pre>
+          )}
+        </div>
+        {content.image ? (
+          <div classname="col-6 border">
             {content.image ? (
               <img
                 src={`http://localhost:8000/images/admin/${content.image}`}
@@ -64,12 +63,11 @@ const ArticleId = () => {
               <p>loading...</p>
             )}
           </div>
-
-          
+        ) : (
+          ""
         )}
       </div>
-      
-    </>
+    </main>
   );
 };
 

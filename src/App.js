@@ -6,11 +6,11 @@ import SearchBar from './common/navbar/chearchBar';
 import { SearchresultProvider } from './common/navbar/resultChearchContext';
 function App() {
   return (
-    <div className="w-full">
+    <div className="w-full h-full fixed bg-slate-100">
          <SearchresultProvider>
        <div className='row col-12'>
         <div className='col-6'>
-      <h1 className='text-4xl'>cheatcode</h1>
+      <h1 className='text-4xl ml-2'>CheatCode</h1>
 
         </div>
         <div className='col-6 flex justify-end '>

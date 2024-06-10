@@ -22,6 +22,7 @@ console.log("resultat",results)
       
       results.map((result, index) => (
        <div key={index}>
+        
          <h2>{result.title}</h2>
          <p>{result.content}</p>
        </div>
