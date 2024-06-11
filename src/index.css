@@ -15,3 +15,8 @@
   box-sizing: border-box; /* Inclure la bordure et le padding dans la largeur totale */
   padding: 10px;
 }
+
+main{
+  backdroung-color:white;
+  color:black
+}
