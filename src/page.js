@@ -4,6 +4,7 @@ import MainNavBar from './common/navbar/MainNavBae';
 import Home from './page/Home';
 import ArticleId from './page/articleId';
 import Navbar, { NavbarDark } from './common/navbar/responsiveNavBar';
+import CodeMirrorId from './page/codeMirror';
 
 
 const Page=()=>{
@@ -22,6 +23,7 @@ const Page=()=>{
             <Routes> 
                  <Route path="/" element={<Home />}  /> 
                  <Route path="/article/:id" element={<ArticleId />}  /> 
+                 <Route path="/codeMirror/:id" element={<CodeMirrorId />}  /> 
             </Routes> 
 
 

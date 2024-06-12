@@ -28,9 +28,7 @@ const MainNavBar = () => {
         className="flex max-lg:hidden z-50 w-1/12  fixed"
         onMouseLeave={() => setIshover(false)}
       >
-        <nav
-          className=""
-        >
+        <nav className="">
           <Link to={"/"}>
             <h3>Home</h3>
           </Link>
@@ -55,7 +53,7 @@ const MainNavBar = () => {
               hoveredMenu.id === menu.id &&
               menu.submenus &&
               menu.submenus.length > 0 && (
-                <div className={`  ${ishover ? "visible   " : "hidden"}`}>
+                <div className={` min-h-96  ${ishover ? "visible   " : "hidden"}`}>
                   {menu.submenus.map(
                     (subMenu) =>
                       subMenu.children &&
@@ -75,13 +73,23 @@ const MainNavBar = () => {
                               child.menuContents &&
                               child.menuContents.length > 0 ? (
                                 <div key={child.id} className="flex-item">
-                                  <Link
-                                    to={`/article/${child.menuContents[0]
-                                      .split("/")
-                                      .pop()}`}
-                                  >
-                                    <h5>{child.name}</h5>
-                                  </Link>
+                                  {menu.name === "Composants" ? (
+                                    <Link
+                                      to={`/codeMirror/${child.menuContents[0]
+                                        .split("/")
+                                        .pop()}`}
+                                    >
+                                      <h5>{child.name}</h5>
+                                    </Link>
+                                  ) : (
+                                    <Link
+                                      to={`/article/${child.menuContents[0]
+                                        .split("/")
+                                        .pop()}`}
+                                    >
+                                      <h5>{child.name}</h5>
+                                    </Link>
+                                  )}
                                 </div>
                               ) : (
                                 <h5> vide : {child.name}</h5>
