@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { URLMENU } from "../utils/Url";
 
 const MainNavBar = () => {
   const [ishover, setIshover] = useState(false);
@@ -15,7 +16,7 @@ const MainNavBar = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/menus")
+    .get(`${URLMENU}`)
       .then((response) => setMenus(response.data["hydra:member"]))
       .catch((error) => console.error("Error fetching menus:", error));
   }, []);

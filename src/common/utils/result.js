@@ -23,11 +23,13 @@ const handleClick=()=>{
   setIsVisible(false)
 }
     return(
-        <div className={`m-3 w-8/12 flex flex-col items-center  transition-all duration-300 bg-slate-200 fixed ${isVisible? 'opacity-100':'opacity-0 pointer-events-none' } `}  >
-          <p className="absolute right-0"
+        <div className={`lg:m-3 w-8/12 m-auto flex flex-col items-center max-lg:w-10/12   transition-all duration-300 bg-slate-200 fixed ${isVisible? 'opacity-100':'opacity-0 pointer-events-none' } `}  >
+          <p className="absolute right-1 cursor-pointer  top-0 text-4xl"
           onClick={handleClick}
           
-          >close</p>
+          >x</p>
+          <div className="mt-2">
+
         {results.length >= 1 && (
           <h4>Page trouvées :</h4>
     
@@ -45,6 +47,8 @@ const handleClick=()=>{
           </div>
             </>
         ))}
+
+          </div>
     </div>
     )
 }

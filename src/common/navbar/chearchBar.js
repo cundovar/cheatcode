@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSearchResult } from './resultChearchContext';
+import { URLSEARCH } from '../utils/Url';
 
 function SearchBar() {
   const [query, setQuery] = useState('');
@@ -10,7 +11,7 @@ function SearchBar() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8000/search?q=${query}`);
+      const response = await axios.get(`${URLSEARCH}${query}`)
       setResults(response.data);
 
     } catch (error) {

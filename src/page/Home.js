@@ -3,6 +3,7 @@ import { useSearchResult } from "../common/navbar/resultChearchContext";
 import axios from "axios";
 import Result from "../common/utils/result";
 import { Link } from "react-router-dom";
+import { Titles } from "../common/components";
 
 
 
@@ -21,7 +22,7 @@ console.log("resultat",results)
     return(
         <main className="h-full w-full p-3 overflow-auto pb-96">
     
-        <h1>home</h1>
+    <Titles title="home"/>
         <div className="flex flex-col items-center">
           <div>
       {menus.length > 0 ? (
@@ -31,7 +32,7 @@ console.log("resultat",results)
           
             {menu.submenus && menu.submenus.length > 0 ? (
               menu.submenus.map((submenu) => (
-                <div key={submenu.id} className="ml-4 flex">
+                <div key={submenu.id} className="ml-4 flex flex-wrap">
              
                   {submenu.children && submenu.children.length > 0 ? (
                     submenu.children.map((child) => (

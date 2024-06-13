@@ -8,6 +8,8 @@ import SearchBar from "../common/navbar/chearchBar";
 import { useSearchResult } from "../common/navbar/resultChearchContext";
 import Result from "../common/utils/result";
 import parse from 'html-react-parser';
+import { URLAPI } from "../common/utils/Url";
+import { Titles } from "../common/components";
 
 const ArticleId = () => {
   const { results } = useSearchResult();
@@ -23,7 +25,7 @@ const ArticleId = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/menu_contents/${id}`)
+    .get(`${URLAPI}/${id}`)
       .then((response) => setContent(response.data))
       .catch((error) => console.error("Error fetching menus:", error));
   }, [id]);
@@ -41,7 +43,8 @@ const ArticleId = () => {
   return (
     
     <main className=" overflow-y-auto  pb-40 w-full h-full bg-slate-50 ">
-    <h2 className=" bg-red-100 p-2 mb-3">{content.title} </h2>
+    
+    <Titles title={content.title}/>
    <Result/>
    <div>
       <div className="lg:w-1/2 m-auto text-justify mb-3">
