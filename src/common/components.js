@@ -1,6 +1,6 @@
-export function Titles({title}){
+export function Titles({title,className}){
 
     return(
-        <h2 className=" bg-red-100 p-2 mb-3">{title} </h2>
+        <h2 className= {`bg-red-100 p-2 mb-3 ${className}`}>{title} </h2>
     )
 }

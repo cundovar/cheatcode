@@ -31,14 +31,20 @@ const handleClick=()=>{
           <div className="mt-2">
 
         {results.length >= 1 && (
-          <h4>Page trouvées :</h4>
+          results.length > 2 ?(
+            <h4>Pages trouvées :</h4>
+            
+          ):(
+            
+            <h4>Page trouvée :</h4>
+          )
     
         )}
           {results.map((result, index) => (
             <>
             
           <div key={index} className="flex">
-    <Link to={`/aricle/${result.content.id}`}>
+    <Link onClick={handleClick} to={`/article/${result.id}`}>
     
             <h5 className="m-2">{result.title}</h5>
         

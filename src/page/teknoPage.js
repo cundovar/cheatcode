@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { URLMENU } from "../common/utils/Url";
+import { URLMENU, URLSUBMENU } from "../common/utils/Url";
 import { Titles } from "../common/components";
 import Result from "../common/utils/result";
 
@@ -11,7 +11,7 @@ const TeknoPage = () => {
 
   useEffect(() => {
     axios
-      .get(`${URLMENU}/${id}`)
+      .get(`${URLSUBMENU}/${id}`)
       .then((response) => setContent(response.data))
       .catch((error) => console.error("Error fetching menus:", error));
   }, [id]);
@@ -22,8 +22,23 @@ console.log("cont",content)
 
   return (
     <main className="w-full h-full overflow-y-auto pb-96">
-         <Result/>
-      <Titles title={content.name} />
+      
+      <Titles title={content.name} className=" max-lg:text-4xl" />
+      {content.children && content.children.map((sub)=>(
+        <div key={sub.id} className="p-3">
+            {sub.menuContents && sub.menuContents.length > 0 ?(
+
+             <Link to={`/article/${sub.menuContents[0].id}`}>
+             <h3 className=" bg-red-300">{sub.name}</h3>
+             </Link>
+            ):(
+                <p>
+                    {sub.name} 
+
+                </p>
+            )}
+        </div>
+      ))}
       {content.submenus && content.submenus.map((submenu) => (
         <div key={submenu.id}  className="p-3">
           <h3 className=" bg-red-300">{submenu.name}</h3>

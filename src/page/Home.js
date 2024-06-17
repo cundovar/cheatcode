@@ -4,6 +4,7 @@ import axios from "axios";
 import Result from "../common/utils/result";
 import { Link } from "react-router-dom";
 import { Titles } from "../common/components";
+import { URLMENU } from "../common/utils/Url";
 
 
 
@@ -11,7 +12,7 @@ import { Titles } from "../common/components";
 const Home=()=>{
   const [menus, setMenus]=useState([])
   useEffect(()=>{
-    axios.get("http://localhost:8000/api/menus")
+    axios.get(URLMENU)
     .then(response => setMenus(response.data['hydra:member']))
     .catch(error => console.error('Error fetching menus:', error));
 }, []);
@@ -20,10 +21,10 @@ const Home=()=>{
     const { results } = useSearchResult();
 console.log("resultat",results)
     return(
-        <main className="h-full w-full p-3 overflow-auto pb-96">
-    
-    <Titles title="home"/>
-        <div className="flex flex-col items-center">
+        <main className="h-full w-full p-3 overflow-auto ">
+
+    <Titles title="home" className=" max-lg:text-4xl" />
+        <div className="flex flex-col items-center pb-96">
           <div>
       {menus.length > 0 ? (
         menus.map((menu) => (

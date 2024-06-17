@@ -26,10 +26,10 @@ const MainNavBar = () => {
   return (
     <>
       <div
-        className="flex max-lg:hidden z-50 w-1/12  fixed"
+        className="flex max-lg:hidden z-50 w-1/12   fixed"
         onMouseLeave={() => setIshover(false)}
       >
-        <nav className="">
+        <nav className=" overscroll-auto ">
           <Link to={"/"}>
             <h3>Home</h3>
           </Link>
@@ -54,7 +54,7 @@ const MainNavBar = () => {
               hoveredMenu.id === menu.id &&
               menu.submenus &&
               menu.submenus.length > 0 && (
-                <div className={` min-h-96  ${ishover ? "visible   " : "hidden"}`}>
+                <div className={` min-h-96  overscroll-auto  ${ishover ? "visible   " : "hidden"}`}>
                   {menu.submenus.map(
                     (subMenu) =>
                       subMenu.children &&
