@@ -20,3 +20,28 @@ main{
   backdroung-color:white;
   color:black
 }
+a {
+  color: rgb(248 113 113);
+  text-decoration: none !important;
+  padding: 2px 1px 0;
+}
+
+
+a:visited {
+  color: #437a16;
+}
+
+a:focus {
+
+color: rgb(248 113 113);
+}
+
+a:hover {
+ color:pink;
+ 
+}
+
+a:active {
+  color: rgb(239 68 68);
+  
+}

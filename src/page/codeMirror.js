@@ -29,7 +29,7 @@ function CodeMirrorId() {
 
 
   return (
-    <main className='w-full h-full  overscroll-auto'>
+    <main className='w-full h-full overflow-auto'>
    
       <h1>Code éditeur</h1>
       {content ? (
@@ -38,6 +38,8 @@ function CodeMirrorId() {
         <Titles title={title}/>
 
       )}
+      <div className=" pb-96 ">
+
       <LiveProvider code={content} noInline >
         <div style={{ display: 'flex', width: '100%', height: '80vh', justifyContent: 'space-between' }}>
           <div style={{ flex: 1, marginRight: '20px', border: '1px solid #ddd', overflow: 'auto' }}>
@@ -49,6 +51,8 @@ function CodeMirrorId() {
           </div>
         </div>
       </LiveProvider>
+
+      </div>
 
 
 
