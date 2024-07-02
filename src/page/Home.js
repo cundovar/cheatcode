@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchResult } from "../common/navbar/resultChearchContext";
 import axios from "axios";
-import Result from "../common/utils/result";
 import { Link } from "react-router-dom";
 import { Titles } from "../common/components";
 import { URLMENU } from "../common/utils/Url";
@@ -16,6 +15,15 @@ const Home=()=>{
     .then(response => setMenus(response.data['hydra:member']))
     .catch(error => console.error('Error fetching menus:', error));
 }, []);
+
+// pour extraire le numéro de la chaine de caractère
+// Cette fonction utilise une expression régulière pour extraire le premier groupe de chiffres dans une chaîne de caractères.
+// La fonction renvoie l'identifiant extrait ou une chaîne vide si aucun identifiant n'est trouvé.
+const extractIdFromMenuContent = (menuContent) => {
+  const regex = /\d+/;
+  const match = menuContent.match(regex);
+  return match ? match[0] : "";
+};
 
 
     const { results } = useSearchResult();
@@ -41,8 +49,9 @@ console.log("resultat",results)
                         <div className=" border p-2 bg-slate-200 m-3 cursor-pointer hover:bg-slate-300 ">
 
                       <Link
-                                    to={`/article/${child.menuContents[0].charAt(child.menuContents[0].length - 1)}`}
-                                  >
+                                     to={`/article/${extractIdFromMenuContent(child.menuContents[0])}`}
+                                     >
+                                  
                         <h5>{child.name}</h5>
                         </Link>
 

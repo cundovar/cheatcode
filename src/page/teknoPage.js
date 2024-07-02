@@ -1,14 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { URLMENU, URLSUBMENU } from "../common/utils/Url";
+import {  URLSUBMENU } from "../common/utils/Url";
 import { Titles } from "../common/components";
-import Result from "../common/utils/result";
+
 
 const TeknoPage = () => {
   const { id } = useParams();
   const [content, setContent] = useState(null);
 
+  const extractIdFromMenuContent = (menuContent) => {
+    const regex = /\d+/;
+    const match = menuContent.match(regex);
+    return match ? match[0] : "";
+  };
+  
   useEffect(() => {
     axios
       .get(`${URLSUBMENU}/${id}`)
@@ -45,7 +51,7 @@ console.log("cont",content)
           {submenu.children && submenu.children.map((child) => (
             <div key={child.id}>
                 {child.menuContents && child.menuContents.length > 0 ? (
-                <Link to={`/article/${child.menuContents[0].charAt(child.menuContents[0].length - 1)}`}
+                <Link to={`/article/${extractIdFromMenuContent(child.menuContents[0])}`}
                                   >
                         <h6 className="text-lg">{child.name}</h6>
                         </Link>
