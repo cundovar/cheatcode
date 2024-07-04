@@ -17,6 +17,7 @@ function App() {
   return (
     <Router>
       <div className="w-full h-full fixed bg-gray-800 p-3 text-slate-300">
+       
         <SearchresultProvider>
           <div className="lg:hidden">
             <Navbar />

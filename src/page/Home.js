@@ -47,13 +47,23 @@ console.log("resultat",results)
                     submenu.children.map((child) => (
                       child.menuContents && child.menuContents.length > 0 ? (
                         <div className=" border p-2 bg-slate-200 m-3 cursor-pointer hover:bg-slate-300 ">
+                             {menu.name==="Composants" ? (
+                      <Link
+                                     to={`/codeMirror/${extractIdFromMenuContent(child.menuContents[0])}`}
+                                     >
+                                  
+                        <h5>{child.name}</h5>
+                        </Link>
 
+                             ):(
                       <Link
                                      to={`/article/${extractIdFromMenuContent(child.menuContents[0])}`}
                                      >
                                   
                         <h5>{child.name}</h5>
                         </Link>
+
+                             )}
 
                         </div>
 

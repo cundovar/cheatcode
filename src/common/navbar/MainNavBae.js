@@ -8,7 +8,11 @@ const MainNavBar = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
 
   const [menus, setMenus] = useState([]);
+const onClickMenu=()=>{
+  setIshover(false);
 
+
+}
   const handleMouseEnter = (menu) => {
     setIshover(true);
     setHoveredMenu(menu);
@@ -26,10 +30,11 @@ const MainNavBar = () => {
   return (
     <>
       <div
-        className="flex max-lg:hidden z-50 w-1/12   fixed"
+        className="flex max-lg:hidden z-50 w-2/12 h-full fixed"
         onMouseLeave={() => setIshover(false)}
       >
-        <nav className=" overscroll-auto ">
+        <nav className=" h-full w-full     ">
+          <div className=" pr-4 overflow-y-auto  h-full pb-52">
           <Link to={"/"}>
             <h3>Home</h3>
           </Link>
@@ -46,6 +51,9 @@ const MainNavBar = () => {
                 </div>
               </div>
             ))}
+
+
+          </div>
         </nav>
         {Array.isArray(menus) &&
           menus.map(
@@ -54,16 +62,17 @@ const MainNavBar = () => {
               hoveredMenu.id === menu.id &&
               menu.submenus &&
               menu.submenus.length > 0 && (
-                <div className={` min-h-96  overscroll-auto  ${ishover ? "visible   " : "hidden"}`}>
+                <div className={` h-screen ${ishover ? "visible   " : "hidden"}`}>
+                  <div className="overflow-y-auto  h-full pb-52">
                   {menu.submenus.map(
                     (subMenu) =>
                       subMenu.children &&
                       subMenu.children.length > 0 && (
                         <div
                           key={subMenu.id}
-                          className=" w-[50rem] bg-slate-100 shadow-lg"
+                          className=" w-[50rem] text-slate-500 bg-slate-100 shadow-lg"
                         >
-                          <h4 className="border-b text-slate-950 font-bold bg-slate-300">
+                          <h4 className="border-b  font-bold bg-slate-300">
                             {subMenu.name}
                           </h4>
                           <div
@@ -79,6 +88,7 @@ const MainNavBar = () => {
                                       to={`/codeMirror/${child.menuContents[0]
                                         .split("/")
                                         .pop()}`}
+                                        onClick={onClickMenu}
                                     >
                                       <h5>{child.name}</h5>
                                     </Link>
@@ -87,6 +97,7 @@ const MainNavBar = () => {
                                       to={`/article/${child.menuContents[0]
                                         .split("/")
                                         .pop()}`}
+                                        onClick={onClickMenu}
                                     >
                                       <h5>{child.name}</h5>
                                     </Link>
@@ -100,6 +111,9 @@ const MainNavBar = () => {
                         </div>
                       )
                   )}
+
+                  </div>
+              
                 </div>
               )
           )}
